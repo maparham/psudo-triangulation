@@ -10,4 +10,5 @@ To run the executable you just need QT4+.
 If the executable doesn't run on your machine you need to compile the source (you will need CGAL lib as well):
 
 cmake .
+
 make
