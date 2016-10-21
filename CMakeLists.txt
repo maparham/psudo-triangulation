@@ -36,10 +36,10 @@ endif()
 # include for local package
 
 # Qt4
-set( QT_USE_QTXML     true )
+set( QT_USE_QTXML     false )
 set( QT_USE_QTMAIN    true )
-set( QT_USE_QTSCRIPT  true )
-set( QT_USE_QTOPENGL  true )
+set( QT_USE_QTSCRIPT  false )
+set( QT_USE_QTOPENGL  false )
 
 find_package(Qt4)  
 
@@ -67,10 +67,15 @@ if ( CGAL_Qt4_FOUND AND QT_FOUND )
 
 endif()
 
+#SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a;.so")
+#SET(CMAKE_FIND_LIBRARY_PREFIXES "lib")
+#SET(BUILD_SHARED_LIBRARIES OFF)
+#SET(CMAKE_EXE_LINKER_FLAGS "-static")
+	
 add_executable( executable  psudo-triangulation.cpp  ${DT_UI_FILES} ${DT_RESOURCE_FILES} )
 
 add_to_cached_list( CGAL_EXECUTABLE_TARGETS executable )
 
 # Link the executable to CGAL and third-party libraries
-target_link_libraries(executable  ${QT_LIBRARIES} ${CGAL_LIBRARIES} ${CGAL_3RD_PARTY_LIBRARIES} )
+target_link_libraries(executable  ${QT_LIBRARIES} ${CGAL_LIBRARIES})
 
